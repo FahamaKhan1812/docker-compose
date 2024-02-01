@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:alpine3.19
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - your/machine/path/folder/must/empty/:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: matan@absprog.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    volumes:
+      - your/machine/path/folder/must/empty/:/var/lib/pgadmin"
+    ports:
+      - "5430:80"
+    depends_on:
+      - db
